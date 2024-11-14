@@ -137,11 +137,11 @@ def generate_possible_states(state):
 
 def attract_pieces_in_state(row, col, pieces, empty_cells):
     for r in range(n):
-        if (r, col) in pieces and pieces[(r, col)] == "gray":
+        if (r, col) in pieces and pieces[(r, col)] in ["gray", "purple"]:
             pieces, empty_cells = move_piece_towards_in_state(r, col, row, col, pieces, empty_cells)
     
     for c in range(n):
-        if (row, c) in pieces and pieces[(row, c)] == "gray":
+        if (row, c) in pieces and pieces[(row, c)] in ["gray", "purple"]:
             pieces, empty_cells = move_piece_towards_in_state(row, c, row, col, pieces, empty_cells)
 
     return pieces, empty_cells
@@ -173,11 +173,11 @@ def move_piece_towards_in_state(from_row, from_col, to_row, to_col, pieces, empt
 
 def repel_pieces_in_state(row, col, pieces, empty_cells):
     for r in range(n):
-        if (r, col) in pieces and pieces[(r, col)] == "gray":
+        if (r, col) in pieces and pieces[(r, col)] in ["gray", "red"]:
             pieces, empty_cells = move_piece_away_in_state(r, col, row, col, pieces, empty_cells)
 
     for c in range(n):
-        if (row, c) in pieces and pieces[(row, c)] == "gray":
+        if (row, c) in pieces and pieces[(row, c)] in ["gray", "red"]:
             pieces, empty_cells = move_piece_away_in_state(row, c, row, col, pieces, empty_cells)
 
     return pieces, empty_cells
